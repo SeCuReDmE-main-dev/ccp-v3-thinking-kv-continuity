@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://securedme.ca/schemas/ccp-v3-capsule.schema.json",
+  "title": "CCP v3.0 Hermetic Continuity Capsule",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "window_1_identity_lineage",
+    "window_2_immutable_invariants",
+    "window_3_ground_truth_t",
+    "window_4_open_horizon_i",
+    "window_5_execution_contract",
+    "window_6_thinking_handoff"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "ccp.v3.0"
+    },
+    "window_1_identity_lineage": {
+      "type": "object",
+      "required": ["conversation_id", "genesis_cid", "paternity_chain"],
+      "properties": {
+        "conversation_id": { "type": "string" },
+        "genesis_cid": { "type": "string" },
+        "paternity_chain": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "window_2_immutable_invariants": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "window_3_ground_truth_t": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "window_4_open_horizon_i": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "window_5_execution_contract": {
+      "type": "object",
+      "required": ["plan_path", "source_model", "target_model"],
+      "properties": {
+        "plan_path": { "type": "string" },
+        "source_model": { "type": "string" },
+        "target_model": { "type": "string" }
+      }
+    },
+    "window_6_thinking_handoff": {
+      "type": "object",
+      "required": ["resolved_traps", "rejected_branches", "verification_gates"],
+      "properties": {
+        "resolved_traps": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "rejected_branches": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "verification_gates": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
